@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import { lessons, units } from '../src/data.js';
+import { declensions, conjugations } from '../src/reference.js';
 import { activities, completeLesson, dayDistance, dueReviews, freshState, grade, rankFor, recordAnswer, refreshState, validateState } from '../src/engine.js';
 
 test('curso contém 6 unidades, 24 lições e 144 atividades válidas',()=>{
@@ -32,4 +33,11 @@ test('manifesto PWA inclui ícones raster compatíveis com instalação',()=>{
     assert.ok(icon,`ícone ${size}`);
     assert.ok(existsSync(new URL(`../public/${icon.src}`,import.meta.url)));
   }
+});
+test('tabelas de consulta cobrem casos e pessoas dos modelos ensinados',()=>{
+  assert.equal(declensions.length,4);
+  for(const table of declensions){assert.equal(table.rows.length,6);assert.deepEqual(table.rows.map(row=>row[0]),['Nominativo','Vocativo','Genitivo','Dativo','Acusativo','Ablativo']);}
+  assert.deepEqual(declensions[2].rows[0].slice(1),declensions[2].rows[4].slice(1));
+  assert.equal(conjugations.length,6);
+  assert.deepEqual(conjugations[3],['nós','sumus','amāmus','vidēmus']);
 });

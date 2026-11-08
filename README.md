@@ -15,6 +15,7 @@ Abra o endereço local mostrado pelo Vite. Para verificar: `npm test` e `npm run
 
 - Progressão sequencial por lições; instruções de gramática e vocabulário por tópico.
 - Múltipla escolha, montagem de frase, tradução digitada, lacuna e associação.
+- Tabelas consultáveis de quatro modelos de declinação e do presente de `esse`, `amāre` e `vidēre`.
 - XP, níveis, patentes, sequência diária, conquistas, missões e corações. Um coração regenera a cada 20 minutos. Três acertos numa prática recuperam um; revisão e prática não consomem corações.
 - Revisão espaçada por atividade: 1, 3, 7, 14 e 30 dias após acertos; erro vence imediatamente.
 - Salvamento local, retomada de lição, exportação/importação de JSON com validação.
