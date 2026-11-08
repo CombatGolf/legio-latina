@@ -2,6 +2,10 @@
 
 Curso interativo de latim clássico em português brasileiro, para navegador e Android. São 9 capítulos, 36 lições, 324 atividades da campanha e 31 desafios de compreensão em 11 leituras guiadas.
 
+[![Baixar APK para Android](https://img.shields.io/badge/BAIXAR_APK-ANDROID-8b0000?style=for-the-badge&logo=android&logoColor=white)](https://github.com/CombatGolf/legio-latina/releases/download/v2.0.0/Legio-Latina-Opus-Magnum.apk)
+
+[Download direto do APK](https://github.com/CombatGolf/legio-latina/releases/download/v2.0.0/Legio-Latina-Opus-Magnum.apk) · [Notas da versão 2.0.0](https://github.com/CombatGolf/legio-latina/releases/tag/v2.0.0)
+
 ## Campanha e biblioteca
 
 - A campanha começa pelas saudações e avança pelas cinco declinações, quatro conjugações, concordância, imperativo, tempos do indicativo, voz passiva e orações relativas.
