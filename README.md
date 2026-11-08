@@ -1,43 +1,49 @@
-# LEGIO LATINA
+# LEGIO LATINA · Opus Magnum
 
-Aplicativo web/PWA de latim clássico em português brasileiro. Uma campanha original com estética de legião romana, 6 capítulos, 24 lições e 144 atividades principais.
+Curso interativo de latim clássico em português brasileiro, para navegador e Android. São 9 capítulos, 36 lições, 324 atividades da campanha e 31 desafios de compreensão em 11 leituras guiadas.
 
-## Abrir e desenvolver
+## Campanha e biblioteca
+
+- A campanha começa pelas saudações e avança pelas cinco declinações, quatro conjugações, concordância, imperativo, tempos do indicativo, voz passiva e orações relativas.
+- As lições trazem explicação, exemplos, glossário, dicas e nove atividades. O treino misto combina questões pendentes e exercícios de lições já vistas.
+- Traduções digitadas aceitam variantes cadastradas por frase, com tolerância a maiúsculas, acentos e pontuação. Quando uma tradução fica fora da lista, o app mostra a resposta modelo e permite reescrever, confirmar o erro ou guardar a atividade para revisão sem perder coração nem ganhar XP.
+- O leitor de filosofia traz dois trechos de Sêneca com 181 ocorrências anotadas. Cada palavra tem forma de dicionário, significado geral, sentido naquele trecho e análise sintática ou morfológica. A tradução de cada parágrafo abre separadamente.
+- O progresso é local. A versão web anterior conserva o progresso e as sessões. Use exportação e importação de JSON para levar o progresso entre navegador e APK.
+
+## Executar e testar
 
 ```sh
 npm ci
 npm run dev
+npm test
+npm run build
 ```
 
-Abra o endereço local mostrado pelo Vite. Para verificar: `npm test` e `npm run build`. O conteúdo está em `src/data.js`; a geração e avaliação das atividades, revisão e persistência ficam em `src/engine.js`; a interface, em `src/main.js`.
+O GitHub Pages usa `GITHUB_PAGES=1 npm run build` para publicar na base `/legio-latina/`. A versão web pode ser instalada como PWA e ficar offline após o primeiro carregamento.
 
-## O que funciona
+## Android
 
-- Progressão sequencial por lições; instruções de gramática e vocabulário por tópico.
-- Múltipla escolha, montagem de frase, tradução digitada, lacuna e associação.
-- Tabelas consultáveis de quatro modelos de declinação e do presente de `esse`, `amāre` e `vidēre`.
-- XP, níveis, patentes, sequência diária, conquistas, missões e corações. Um coração regenera a cada 20 minutos. Três acertos numa prática recuperam um; revisão e prática não consomem corações.
-- Revisão espaçada por atividade: 1, 3, 7, 14 e 30 dias após acertos; erro vence imediatamente.
-- Salvamento local, retomada de lição, exportação/importação de JSON com validação.
-- PWA instalável após publicação HTTPS, com ícones PNG de 192/512 px, app e lições no cache para uso offline após o primeiro carregamento. Sem conta ou servidor.
-- Controles por teclado, rótulos, foco visível e preferência por movimento reduzido.
+Requisitos de build: JDK 17, Node 22, Android SDK Platform 35, Build Tools 35.0.0 e os utilitários `zip` e `bash`.
 
-## Voz e pronúncia
+```sh
+npm ci
+npm test
+ANDROID_SDK_ROOT=/caminho/do/sdk bash android/build.sh
+```
 
-O app usa `speechSynthesis.getVoices()` para detectar as vozes **do dispositivo**. Prefere uma voz com idioma `la-*` quando disponível; em outros casos usa uma voz italiana ou portuguesa, identificada como **aproximação**, nunca como pronúncia clássica garantida. O botão de microfone tenta o reconhecimento do navegador com `la-VA`, mostra a transcrição e não atribui nota, pois o suporte é incerto. Áudio e reconhecimento dependem do navegador e podem não funcionar offline.
+O APK fica em `android/out/Legio-Latina-Opus-Magnum.apk`. Requer Android 8 ou posterior com Android System WebView atualizado. As lições e leituras já vêm dentro do app e podem ser abertas sem internet.
 
-[A documentação do navegador](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis/getVoices) confirma que as vozes dependem do dispositivo. [Google Cloud Gemini TTS](https://docs.cloud.google.com/text-to-speech/docs/gemini-tts) lista `la-VA` em *Preview*, mas uma integração de nuvem exige serviço, custos e proteção de credenciais; ela não está ativada neste projeto. Uma voz latina `la-VA` também pode seguir convenção eclesiástica. A [referência de pronúncia clássica do DCC](https://dcc.dickinson.edu/grammar/latin/vowel-and-consonant-pronunciation) descreve, por exemplo, `c` duro e `v` consonantal como /w/.
+O build padrão gera uma assinatura de teste. A mesma chave local é reutilizada nos próximos builds daquele checkout. Para assinar com sua própria chave, defina `LEGIO_KEYSTORE`, `LEGIO_KEY_ALIAS`, `LEGIO_STORE_PASSWORD` e, se necessário, `LEGIO_KEY_PASSWORD`. Atualizações instaladas sobre uma cópia existente precisam da mesma chave de assinatura. O fluxo GitHub Actions gera um artefato de teste por execução.
 
-## Conteúdo, fontes e limites
+O Android usa as vozes locais do sintetizador do sistema. O navegador usa Web Speech quando disponível. Voz italiana ou portuguesa é uma aproximação quando não há voz latina.
 
-Frases, dicas e exercícios foram escritos para este projeto. A gramática foi conferida com [Allen and Greenough via Dickinson College Commentaries](https://dcc.dickinson.edu/grammar/latin), um recurso de consulta; nenhum exercício foi copiado. Código e conteúdo autoral deste repositório têm licença MIT. Ícones SVG também são originais. As fontes tipográficas Cinzel e DM Sans são servidas pelo Google Fonts quando há rede e substituídas por fontes locais offline; consulte as licenças [Cinzel](https://fonts.google.com/specimen/Cinzel/license) e [DM Sans](https://fonts.google.com/specimen/DM+Sans/license).
+## Fontes
 
-Esta versão ensina fundamentos até casos e presente verbal. **Não é um curso exaustivo da língua**: faltam tempos adicionais, modos, voz passiva, quarta e quinta declinações, sintaxe avançada, textos literários graduados e uma revisão editorial por latinista. A correção da tradução digitada compara uma resposta modelo com normalização de caixa, pontuação e acentos; paráfrases corretas ainda podem ser recusadas. Não há sincronização, conta, placar público, notificações ou voz neural clássica verificada.
+As explicações foram preparadas com apoio da gramática [Allen and Greenough, Dickinson College Commentaries](https://dcc.dickinson.edu/grammar/latin). As traduções, as análises e as atividades foram escritas para o projeto. Cada trecho antigo traz sua referência no leitor.
 
-## Publicação
+- [Sêneca, Epistulae morales 1](https://www.yorku.ca/pswarney/Texts/seneca/epistula/epistula-1.htm)
+- [Sêneca, De brevitate vitae 1.3–4](https://atlas.perseus.tufts.edu/library/passage/urn:cts:latinLit:stoa0255.stoa004.perseus-lat2:1.3-1.4/)
+- [César, De bello Gallico 1.1](https://www.perseus.tufts.edu/hopper/text?doc=Caes.+Gal.+1.1)
+- [Catulo, Carmen 85](https://www.perseus.tufts.edu/hopper/text?doc=Catul.+85)
 
-O fluxo `.github/workflows/deploy.yml` testa, constrói com base `/legio-latina/` e publica `dist` no GitHub Pages a cada envio à `main`. No repositório, configure **Settings → Pages → Build and deployment → GitHub Actions** uma vez. O `manifest.webmanifest` e o service worker usam caminhos relativos ao escopo do Pages. Para testar offline, visite o site uma vez, espere o service worker instalar, desconecte e recarregue.
-
-## Privacidade
-
-O progresso fica em `localStorage`. A exportação é um arquivo local. Nenhuma chave de API deve ser colocada no cliente ou no repositório. Para uma futura voz neural em nuvem, use um servidor que proteja a chave e obtenha autorização explícita para custos.
+Código e conteúdo autoral sob licença MIT. O texto latino de autores antigos está em domínio público.

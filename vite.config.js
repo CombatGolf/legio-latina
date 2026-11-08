@@ -1,2 +1,2 @@
 import { defineConfig } from 'vite';
-export default defineConfig({ base: process.env.GITHUB_PAGES ? '/legio-latina/' : '/' });
+export default defineConfig({ base: process.env.GITHUB_PAGES === '1' ? '/legio-latina/' : '/' });
