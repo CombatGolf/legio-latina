@@ -18,7 +18,7 @@ Abra o endereço local mostrado pelo Vite. Para verificar: `npm test` e `npm run
 - XP, níveis, patentes, sequência diária, conquistas, missões e corações. Um coração regenera a cada 20 minutos. Três acertos numa prática recuperam um; revisão e prática não consomem corações.
 - Revisão espaçada por atividade: 1, 3, 7, 14 e 30 dias após acertos; erro vence imediatamente.
 - Salvamento local, retomada de lição, exportação/importação de JSON com validação.
-- PWA instalável após publicação HTTPS, com app e lições no cache para uso offline após o primeiro carregamento. Sem conta ou servidor.
+- PWA instalável após publicação HTTPS, com ícones PNG de 192/512 px, app e lições no cache para uso offline após o primeiro carregamento. Sem conta ou servidor.
 - Controles por teclado, rótulos, foco visível e preferência por movimento reduzido.
 
 ## Voz e pronúncia

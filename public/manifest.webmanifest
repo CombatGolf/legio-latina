@@ -1,1 +1,31 @@
-{"name":"LEGIO LATINA — Latim clássico","short_name":"LEGIO LATINA","description":"Campanha interativa de latim clássico em português brasileiro","start_url":"./","scope":"./","display":"standalone","background_color":"#191014","theme_color":"#191014","icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]}
+{
+  "name": "LEGIO LATINA — Latim clássico",
+  "short_name": "LEGIO LATINA",
+  "description": "Campanha interativa de latim clássico em português brasileiro",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#191014",
+  "theme_color": "#191014",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "id": "./"
+}

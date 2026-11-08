@@ -1,11 +1,11 @@
-const CACHE='legio-latina-v1';
+const CACHE='legio-latina-v2';
 const scope=self.registration.scope;
 self.addEventListener('install',event=>event.waitUntil((async()=>{
   const cache=await caches.open(CACHE);
   const response=await fetch(scope,{cache:'reload'});
   if(!response.ok)throw new Error('App shell unavailable');
   const html=await response.clone().text();
-  const paths=[scope,new URL('manifest.webmanifest',scope).href,new URL('icon.svg',scope).href,new URL('favicon.svg',scope).href];
+  const paths=[scope,new URL('manifest.webmanifest',scope).href,new URL('icon.svg',scope).href,new URL('icon-192.png',scope).href,new URL('icon-512.png',scope).href,new URL('favicon.svg',scope).href];
   for(const match of html.matchAll(/(?:src|href)="([^"]+)"/g)){
     const path=new URL(match[1],scope).href;
     if(path.startsWith(scope))paths.push(path);

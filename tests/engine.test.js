@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync, existsSync } from 'node:fs';
 import { lessons, units } from '../src/data.js';
 import { activities, completeLesson, dayDistance, dueReviews, freshState, grade, rankFor, recordAnswer, refreshState, validateState } from '../src/engine.js';
 
@@ -23,4 +24,12 @@ test('conclusão concede bônus uma vez e sequência respeita dia local',()=>{
 test('importação rejeita estrutura inválida e filtra lições desconhecidas',()=>{
   assert.throws(()=>validateState({version:2}),/inválido/);
   const s=freshState();s.completed=['i-1','inexistente'];s.reviews={'i-1-read':{stage:99,due:0},'fake':{stage:1,due:0}};const clean=validateState(s);assert.deepEqual(clean.completed,['i-1']);assert.equal(clean.reviews['i-1-read'].stage,5);
+});
+test('manifesto PWA inclui ícones raster compatíveis com instalação',()=>{
+  const manifest=JSON.parse(readFileSync(new URL('../public/manifest.webmanifest',import.meta.url),'utf8'));
+  for(const size of ['192x192','512x512']){
+    const icon=manifest.icons.find(item=>item.sizes===size&&item.type==='image/png');
+    assert.ok(icon,`ícone ${size}`);
+    assert.ok(existsSync(new URL(`../public/${icon.src}`,import.meta.url)));
+  }
 });
